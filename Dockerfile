@@ -7,7 +7,7 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-ENV FLASK_APP="flaskblog.py"
+#ENV FLASK_APP="flaskblog.py"
 ENV LOG_LEVEL="INFO"
 
 CMD ["python", "flaskblog.py" ]
