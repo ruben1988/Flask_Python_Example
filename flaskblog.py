@@ -1,4 +1,4 @@
-from flask import Flask, escape, request
+from flask import Flask, escape, request, url_for, render_template
 
 app = Flask(__name__)
 
@@ -32,9 +32,17 @@ def first_html(name='Ruben'):
         </url>
         </body>
     </html>
-
    '''%name
 
+@app.route('/static_file')
+def static_file():
+    return "<img src='"+url_for("static",filename="img/Flask.png")+"'>"
+   #return "<img src='/static/img/Flask.png'>"
+   
+@app.route('/my_first_template')
+@app.route('/my_first_template/<name>')
+def my_first_template(name='Ruben'):
+   return render_template('view.html', name=name)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
